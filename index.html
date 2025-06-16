@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="icon.ico" type="image/x-icon" />
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: gray;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: default;
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 300px;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    #footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.75rem;
+      color: #888;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="troll.gif" alt="troll" />
+
+  <div id="footer">veetiq</div>
+
+  <audio id="audio" src="song.mp3"></audio>
+
+  <script>
+    document.body.addEventListener("click", () => {
+      const audio = document.getElementById("audio");
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      }
+    }, { once: true });
+
+    const frames = [".", "..", "...", "....", ".....", "......"];
+    let i = 0;
+    setInterval(() => {
+      document.title = frames[i % frames.length];
+      i++;
+    }, 400);
+  </script>
+
+</body>
+</html>
