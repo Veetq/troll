@@ -3,507 +3,709 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>antitroll.lol</title>
+    <title>Äijien servu</title>
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 30%, #0f1419 70%, #1e2a4a 100%);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: 
+                linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #2d1b69 50%, #1e3a8a 75%, #3730a3 100%),
+                radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
             position: relative;
             overflow: hidden;
         }
 
-        .particles-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.4);
-            animation: float-particle 8s infinite linear;
-        }
-
-        .particle:nth-child(1) { 
-            width: 3px; height: 3px; left: 10%; 
-            animation-delay: 0s; animation-duration: 12s; 
-        }
-        .particle:nth-child(2) { 
-            width: 2px; height: 2px; left: 20%; 
-            animation-delay: 2s; animation-duration: 10s; 
-        }
-        .particle:nth-child(3) { 
-            width: 4px; height: 4px; left: 30%; 
-            animation-delay: 4s; animation-duration: 14s; 
-        }
-        .particle:nth-child(4) { 
-            width: 2px; height: 2px; left: 40%; 
-            animation-delay: 6s; animation-duration: 9s; 
-        }
-        .particle:nth-child(5) { 
-            width: 3px; height: 3px; left: 50%; 
-            animation-delay: 8s; animation-duration: 11s; 
-        }
-        .particle:nth-child(6) { 
-            width: 2px; height: 2px; left: 60%; 
-            animation-delay: 10s; animation-duration: 13s; 
-        }
-        .particle:nth-child(7) { 
-            width: 4px; height: 4px; left: 70%; 
-            animation-delay: 12s; animation-duration: 8s; 
-        }
-        .particle:nth-child(8) { 
-            width: 3px; height: 3px; left: 80%; 
-            animation-delay: 14s; animation-duration: 12s; 
-        }
-        .particle:nth-child(9) { 
-            width: 2px; height: 2px; left: 90%; 
-            animation-delay: 16s; animation-duration: 10s; 
-        }
-
-        /* Purple particles */
-        .particle-purple {
-            background: rgba(147, 51, 234, 0.3);
-        }
-
-        .particle:nth-child(3) { background: rgba(147, 51, 234, 0.3); }
-        .particle:nth-child(6) { background: rgba(147, 51, 234, 0.3); }
-        .particle:nth-child(9) { background: rgba(147, 51, 234, 0.3); }
-
-        @keyframes float-particle {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1);
-                opacity: 0;
-            }
-        }
-
-        /* Blurred background orbs */
-        .bg-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.3;
-            animation: orb-float 6s ease-in-out infinite alternate;
-        }
-
-        .bg-orb-1 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent);
-            top: 10%;
-            left: 15%;
-            animation-delay: 0s;
-        }
-
-        .bg-orb-2 {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(147, 51, 234, 0.4), transparent);
-            bottom: 20%;
-            right: 20%;
-            animation-delay: 2s;
-        }
-
-        .bg-orb-3 {
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent);
-            top: 50%;
-            right: 10%;
-            animation-delay: 4s;
-        }
-
-        .bg-orb-4 {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(147, 51, 234, 0.2), transparent);
-            bottom: 10%;
-            left: 10%;
-            animation-delay: 1s;
-        }
-
-        @keyframes orb-float {
-            0% { 
-                transform: translate(0, 0) scale(1); 
-                opacity: 0.2; 
-            }
-            100% { 
-                transform: translate(30px, -20px) scale(1.1); 
-                opacity: 0.4; 
-            }
-        }
-
-      
-        .gradient-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 30%,
-                rgba(59, 130, 246, 0.03) 50%,
-                transparent 70%
-            );
-            animation: gradient-move 15s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes gradient-move {
-            0% { transform: translate(-50%, -50%); }
-            100% { transform: translate(-40%, -40%); }
-        }
-
-        .online-badge {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(59, 130, 246, 0.4);
-            color: #60a5fa;
-            padding: 12px 20px;
+        .online-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 10px;
-            backdrop-filter: blur(15px);
-            z-index: 10;
-            animation: fade-in 0.8s ease-out 0.3s both;
-            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+            gap: 6px;
+            border: 1px solid rgba(96, 165, 250, 0.3);
         }
 
-        @keyframes fade-in {
-            0% { opacity: 0; transform: translateY(-10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #3b82f6;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
-        }
-
-        .server-box {
-            background: rgba(30, 41, 59, 0.3);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            max-width: 420px;
-            width: 90%;
-            position: relative;
-            z-index: 10;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.3),
-                0 0 0 1px rgba(59, 130, 246, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            animation: slide-up 0.8s ease-out both;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .server-box:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 
-                0 35px 70px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(59, 130, 246, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-
-        .server-box::before {
+        .online-indicator::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%, rgba(147, 51, 234, 0.1) 100%);
-            border-radius: 24px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            background: linear-gradient(135deg, rgba(96,165,250,0.2) 0%, transparent 50%);
+            border-radius: 20px;
             pointer-events: none;
         }
 
-        .server-box:hover::before {
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #60a5fa;
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: scale(1.2);
+                box-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
+            }
+        }
+
+        .background-dots {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+
+        .dot:hover {
+            transform: scale(1.5);
+            z-index: 10;
+        }
+
+        .dot.dragging {
+            z-index: 20;
+            transform: scale(2);
+            transition: none;
+        }
+
+        .dot.small {
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+        }
+
+        .dot.medium {
+            width: 3px;
+            height: 3px;
+            background: rgba(96, 165, 250, 0.25);
+            box-shadow: 0 0 10px rgba(96, 165, 250, 0.2);
+        }
+
+        .dot.large {
+            width: 4px;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 0 12px rgba(139, 92, 246, 0.25);
+        }
+
+        .dot.special {
+            width: 5px;
+            height: 5px;
+            background: rgba(16, 185, 129, 0.35);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .dot.reactive {
+            transform: scale(2);
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(96,165,250,0.03) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(139,92,246,0.03) 50%, transparent 70%);
+            animation: shimmer 12s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: translateX(-100px);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: translateX(100px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px);
+            }
+            50% { 
+                transform: translateY(-20px);
+            }
+        }
+
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #60a5fa 0%, #3b82f6 50%, #1e40af 100%);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            box-shadow: 
+                0 0 20px rgba(96, 165, 250, 0.8),
+                0 0 40px rgba(96, 165, 250, 0.4),
+                inset 0 0 10px rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .cursor.visible {
             opacity: 1;
         }
 
-        @keyframes slide-up {
-            0% {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(5, 150, 105, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(5, 150, 105, 0.4);
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10000;
         }
 
-        .server-label {
-            color: #e2e8f0;
-            font-size: 16px;
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            pointer-events: auto;
+        }
+
+        .server-ip-label {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
             margin-bottom: 20px;
-            font-weight: 500;
-            animation: fade-in 0.8s ease-out 0.5s both;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .ip-container {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            cursor: none;
+            pointer-events: auto;
+        }
+
+        .ip-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(96,165,250,0.1) 0%, transparent 50%);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .ip-text {
+            color: #60a5fa;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .button-group {
             display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 16px;
-            flex-wrap: wrap;
             margin-bottom: 20px;
         }
 
-        .server-ip {
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            font-size: 26px;
+        .btn {
+            flex: 1;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-size: 15px;
             font-weight: 600;
-            color: #60a5fa;
-            background: rgba(15, 23, 42, 0.7);
-            padding: 16px 24px;
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            animation: fade-in 0.8s ease-out 0.7s both;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .server-ip::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .server-ip:hover {
-            border-color: rgba(59, 130, 246, 0.6);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-            transform: scale(1.02);
-        }
-
-        .server-ip:hover::before {
-            left: 100%;
-        }
-
-        .copy-btn {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.2) 100%);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #e2e8f0;
-            padding: 16px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
+            cursor: none;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(10px);
-            animation: fade-in 0.8s ease-out 0.9s both;
+            justify-content: center;
+            text-decoration: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
             position: relative;
             overflow: hidden;
+            pointer-events: auto;
         }
 
-        .copy-btn::before {
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .copy-btn:hover {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(147, 51, 234, 0.3) 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        .btn:hover::before {
+            opacity: 1;
         }
 
-        .copy-btn:hover::before {
-            left: 100%;
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5, #3b82f6);
+            color: white;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .copy-btn:active {
-            transform: translateY(0);
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6);
         }
 
-        .copy-btn.copied {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(16, 185, 129, 0.3) 100%);
-            border-color: rgba(34, 197, 94, 0.5);
-            animation: success-flash 0.4s ease-out;
+        .btn-primary:disabled {
+            background: linear-gradient(135deg, #059669, #10b981);
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.4);
         }
 
-        @keyframes success-flash {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+        .btn-outline {
+            background: transparent;
+            color: #10b981;
+            border: 2px solid #10b981;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-outline:hover {
+            background: rgba(16, 185, 129, 0.1);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
         }
 
         .help-text {
-            color: #94a3b8;
             font-size: 14px;
-            animation: fade-in 0.8s ease-out 1.1s both;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
-        .copy-icon {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-            transition: transform 0.2s ease;
+        .version-card {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(15px);
+            max-width: 200px;
+            margin: 0 auto;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            pointer-events: auto;
         }
 
-        .copy-btn:hover .copy-icon {
-            transform: scale(1.05);
+        .version-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(96,165,250,0.1) 0%, transparent 50%);
+            border-radius: 16px;
+            pointer-events: none;
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .server-box {
-                padding: 30px 20px;
-                margin: 20px;
+        .version-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .version-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                max-width: 350px;
             }
             
-            .server-ip {
-                font-size: 22px;
-                padding: 14px 20px;
-            }
-            
-            .online-badge {
-                top: 20px;
-                right: 20px;
-                padding: 10px 16px;
-            }
-            
-            .ip-container {
+            .button-group {
                 flex-direction: column;
-                gap: 12px;
+            }
+            
+            .btn {
+                width: 100%;
             }
 
-            .bg-orb {
+            .online-indicator {
+                top: 10px;
+                right: 10px;
+                font-size: 11px;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            * {
+                cursor: auto;
+            }
+            
+            .cursor {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
-    
-    <div class="gradient-overlay"></div>
-
-  
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3"></div>
-    <div class="bg-orb bg-orb-4"></div>
-
-    <!-- Floating particles -->
-    <div class="particles-container">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+    <div class="online-indicator">
+        <div class="online-dot"></div>
+        Online 24/7
     </div>
 
-    <div class="online-badge">
-        <div class="status-dot"></div>
-        Online
-    </div>
+    <div class="background-dots" id="backgroundDots"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="notification" id="notification">IP Copied!</div>
 
-    <div class="server-box">
-        <p class="server-label">Server IP</p>
-        <div class="ip-container">
-            <code class="server-ip">antitroll.lol</code>
-            <button class="copy-btn" onclick="copyIP()">
-                <svg class="copy-icon" viewBox="0 0 24 24">
-                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-                </svg>
-                <span id="copy-text">Copy</span>
-            </button>
+    <div class="container">
+        <h2 class="server-ip-label">Server IP</h2>
+        
+        <div class="ip-container" onclick="copyToClipboard()">
+            <div class="ip-text">213.170.135.181:25592</div>
         </div>
-        <p class="help-text">Click to copy and paste in Minecraft</p>
+
+        <div class="button-group">
+            <button id="copyBtn" class="btn btn-primary" onclick="copyToClipboard()">
+                <span id="copyText">Copy IP</span>
+            </button>
+
+            <a href="http://map.antitroll.lol:8100" target="_blank" class="btn btn-outline">
+                View Map
+            </a>
+        </div>
+
+        <div class="version-card">
+            <div class="version-value">1.21.6</div>
+            <div class="version-label">Version</div>
+        </div>
     </div>
 
     <script>
-        function copyIP() {
-            const ip = 'antitroll.lol';
-            const button = document.querySelector('.copy-btn');
-            const copyText = document.getElementById('copy-text');
+        const cursor = document.getElementById('cursor');
+        const backgroundDots = document.getElementById('backgroundDots');
+        let mouseX = 0;
+        let mouseY = 0;
+        let dots = [];
+        let isDragging = false;
+        let draggedDot = null;
+        let dragOffset = { x: 0, y: 0 };
+
+        function createDots() {
+            const dotCount = 150;
+            const dotTypes = ['small', 'medium', 'large', 'special'];
             
-            navigator.clipboard.writeText(ip).then(() => {
-                button.classList.add('copied');
+            for (let i = 0; i < dotCount; i++) {
+                const dot = document.createElement('div');
+                const type = dotTypes[Math.floor(Math.random() * dotTypes.length)];
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                
+                dot.className = `dot ${type}`;
+                dot.style.left = x + 'px';
+                dot.style.top = y + 'px';
+                
+                const floatDelay = Math.random() * 5;
+                dot.style.animation = `float ${3 + Math.random() * 4}s ease-in-out ${floatDelay}s infinite`;
+                
+                backgroundDots.appendChild(dot);
+                dots.push({
+                    element: dot,
+                    x: x,
+                    y: y,
+                    originalX: x,
+                    originalY: y,
+                    type: type
+                });
+            }
+        }
+
+        function updateDotInteractions() {
+            if (isDragging) return;
+            
+            dots.forEach(dot => {
+                const distance = Math.sqrt(
+                    Math.pow(mouseX - dot.x, 2) + Math.pow(mouseY - dot.y, 2)
+                );
+                
+                if (distance < 100) {
+                    const force = (100 - distance) / 100;
+                    const angle = Math.atan2(dot.y - mouseY, dot.x - mouseX);
+                    
+                    dot.x = dot.originalX + Math.cos(angle) * force * 30;
+                    dot.y = dot.originalY + Math.sin(angle) * force * 30;
+                    
+                    dot.element.style.left = dot.x + 'px';
+                    dot.element.style.top = dot.y + 'px';
+                    dot.element.classList.add('reactive');
+                    
+                    if (distance < 50) {
+                        dot.element.style.transform = `scale(${2 + force})`;
+                        dot.element.style.opacity = Math.min(1, 0.4 + force);
+                    }
+                } else {
+                    dot.x += (dot.originalX - dot.x) * 0.1;
+                    dot.y += (dot.originalY - dot.y) * 0.1;
+                    
+                    dot.element.style.left = dot.x + 'px';
+                    dot.element.style.top = dot.y + 'px';
+                    dot.element.classList.remove('reactive');
+                    dot.element.style.transform = '';
+                    dot.element.style.opacity = '';
+                }
+            });
+        }
+
+        // Fixed drag functionality
+        document.addEventListener('mousedown', (e) => {
+            const clickedDot = e.target.closest('.dot');
+            if (clickedDot) {
+                e.preventDefault();
+                isDragging = true;
+                draggedDot = dots.find(dot => dot.element === clickedDot);
+                
+                if (draggedDot) {
+                    const rect = clickedDot.getBoundingClientRect();
+                    dragOffset.x = e.clientX - rect.left - rect.width / 2;
+                    dragOffset.y = e.clientY - rect.top - rect.height / 2;
+                    
+                    draggedDot.element.classList.add('dragging');
+                    draggedDot.element.style.animation = 'none';
+                }
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursor.style.left = e.clientX - 12 + 'px';
+            cursor.style.top = e.clientY - 12 + 'px';
+            
+            cursor.classList.add('visible');
+            
+            if (isDragging && draggedDot) {
+                const newX = e.clientX - dragOffset.x;
+                const newY = e.clientY - dragOffset.y;
+                
+                const boundedX = Math.max(0, Math.min(window.innerWidth - 10, newX));
+                const boundedY = Math.max(0, Math.min(window.innerHeight - 10, newY));
+                
+                draggedDot.x = boundedX;
+                draggedDot.y = boundedY;
+                draggedDot.originalX = boundedX;
+                draggedDot.originalY = boundedY;
+                
+                draggedDot.element.style.left = boundedX + 'px';
+                draggedDot.element.style.top = boundedY + 'px';
+            } else {
+                updateDotInteractions();
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging && draggedDot) {
+                draggedDot.element.classList.remove('dragging');
+                const floatDelay = Math.random() * 5;
+                draggedDot.element.style.animation = `float ${3 + Math.random() * 4}s ease-in-out ${floatDelay}s infinite`;
+            }
+            
+            isDragging = false;
+            draggedDot = null;
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursor.classList.add('visible');
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursor.classList.remove('visible');
+            
+            if (isDragging && draggedDot) {
+                draggedDot.element.classList.remove('dragging');
+                const floatDelay = Math.random() * 5;
+                draggedDot.element.style.animation = `float ${3 + Math.random() * 4}s ease-in-out ${floatDelay}s infinite`;
+            }
+            
+            isDragging = false;
+            draggedDot = null;
+            
+            dots.forEach(dot => {
+                dot.element.classList.remove('reactive');
+                dot.element.style.transform = '';
+                dot.element.style.opacity = '';
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            backgroundDots.innerHTML = '';
+            dots = [];
+            createDots();
+        });
+
+        const interactiveElements = document.querySelectorAll('.btn, .ip-container');
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.3)';
+                cursor.style.background = 'radial-gradient(circle, #10b981 0%, #059669 50%, #047857 100%)';
+                cursor.style.borderColor = 'rgba(16, 185, 129, 0.9)';
+                cursor.style.boxShadow = `
+                    0 0 25px rgba(16, 185, 129, 0.9),
+                    0 0 50px rgba(16, 185, 129, 0.5),
+                    inset 0 0 15px rgba(255, 255, 255, 0.4)
+                `;
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'radial-gradient(circle, #60a5fa 0%, #3b82f6 50%, #1e40af 100%)';
+                cursor.style.borderColor = 'rgba(255, 255, 255, 0.8)';
+                cursor.style.boxShadow = `
+                    0 0 20px rgba(96, 165, 250, 0.8),
+                    0 0 40px rgba(96, 165, 250, 0.4),
+                    inset 0 0 10px rgba(255, 255, 255, 0.3)
+                `;
+            });
+        });
+
+        const serverIP = '213.170.135.181:25592';
+        const copyBtn = document.getElementById('copyBtn');
+        const copyText = document.getElementById('copyText');
+        const notification = document.getElementById('notification');
+
+        function showNotification() {
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        async function copyToClipboard() {
+            try {
+                await navigator.clipboard.writeText(serverIP);
+                
+                copyBtn.disabled = true;
                 copyText.textContent = 'Copied!';
                 
+                showNotification();
+                
                 setTimeout(() => {
-                    button.classList.remove('copied');
-                    copyText.textContent = 'Copy';
+                    copyText.textContent = 'Copy IP';
+                    copyBtn.disabled = false;
                 }, 2000);
-            }).catch(() => {
+            } catch (err) {
+                console.error('Failed to copy: ', err);
                 const textArea = document.createElement('textarea');
-                textArea.value = ip;
+                textArea.value = serverIP;
                 document.body.appendChild(textArea);
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
                 
-                button.classList.add('copied');
+                copyBtn.disabled = true;
                 copyText.textContent = 'Copied!';
                 
+                showNotification();
+                
                 setTimeout(() => {
-                    button.classList.remove('copied');
-                    copyText.textContent = 'Copy';
+                    copyText.textContent = 'Copy IP';
+                    copyBtn.disabled = false;
                 }, 2000);
-            });
+            }
         }
+
+        createDots();
     </script>
 </body>
 </html>
