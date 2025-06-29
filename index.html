@@ -230,7 +230,7 @@
 
         .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
             position: relative;
             z-index: 1;
@@ -284,16 +284,20 @@
         }
 
         .button-group {
-            display: flex;
-            gap: 16px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin-bottom: 20px;
         }
 
+        .button-group .btn:first-child {
+            grid-column: 1 / -1;
+        }
+
         .btn {
-            flex: 1;
-            padding: 14px 24px;
+            padding: 14px 20px;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             cursor: none;
             transition: all 0.3s ease;
@@ -352,6 +356,19 @@
             background: rgba(16, 185, 129, 0.1);
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-stats {
+            background: transparent;
+            color: #a855f7;
+            border: 2px solid #a855f7;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+        }
+
+        .btn-stats:hover {
+            background: rgba(168, 85, 247, 0.1);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
         }
 
         .help-text {
@@ -413,11 +430,12 @@
             }
             
             .button-group {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
-            
-            .btn {
-                width: 100%;
+
+            .button-group .btn:first-child {
+                grid-column: 1;
             }
 
             .online-indicator {
@@ -463,6 +481,10 @@
 
             <a href="http://map.antitroll.lol:8100" target="_blank" class="btn btn-outline">
                 View Map
+            </a>
+
+            <a href="http://stats.antitroll.lol:8167" target="_blank" class="btn btn-stats">
+                Player Stats
             </a>
         </div>
 
